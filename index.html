@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>page d'accueil</title>
+    <script
+        src="http://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+
+  <script src="jquery.js"></script>
+
+  </head>
+
+  <body>
+    <div class="menu">
+<!--
+    <ul>
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#">se connecter</a></li>
+      <li><a href="#">panier</a></li>
+      <li><a href="#">retour</a></li>
+    </ul> -->
+    <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Ecommerce</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Accueil</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">nos produits <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Hauts</a></li>
+          <li><a href="#">Sacs</a></li>
+          <li><a href="#">Vestes</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Panier</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="finscription.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="fconnecter.html"><span class="glyphicon glyphicon-log-in"></span> se connecter</a></li>
+    </ul>
+  </div>
+</nav>
+    </div>
+    <div class="container">
+    <h1>Mon e-commerce</h1>
+    <!-- <div class="container"> -->
+<div class="row">
+
+
+    <div class="col-md-6 slider">
+
+      <img src="cinq.JPG" alt="">  <!--  indice 0 -->
+
+      <img src="deux.JPG" alt="">  <!--  indice 1 -->
+
+      <img src="trois.JPG" alt="">  <!--  indice 2 -->
+
+      <img src="quatre.JPG" alt="">  <!--  indice 3 -->
+      <img src="zalando.jpg" alt="">  <!--  indice 4 -->
+
+    </div>
+    <div class="col-md-4 section ">
+      <h2>description de nos produits</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    </div>
+      <h1>mes produits</h1>
+    <div class="produit">
+
+      <div class="haut"><a href="#"><img class="image"src="un.JPG" alt=""></a></div>
+      <div class="haut"><a href="#"><img class="image" src="deux.JPG" alt=""></a></div>
+      <div class="haut"><a href="#"><img class="image" src="trois.JPG" alt=""></a></div>
+      <div class="haut"><a href="#"><img class="image" src="cinq.JPG" alt=""></a></div>
+      <div class="haut"><a href="#"><img class="image" src="zalando.jpg" alt=""></a></div>
+      <div class="haut"><a href="#"><img class="image" src="quatre.JPG" alt=""></a></div>
+
+
+    </div>
+  </div>
+    <script>
+    $(function(){
+      // declarations des variables
+      var indice=1; //represente l'indice de l'image
+      var tourne =true; //indique que le slider tour
+      var nbimage = $('img').length;
+      //declaration d'une fonction d'affichage des images
+      function affiche(){
+        /*dans cette fonction on compare l'indice à au nbre total d'images si oui on affecte 0 à indice et ne rentre pas dans le else mais on affiche les image et on ecrement l'indice*/
+        if(indice == nbimage){
+          indice =0; //si l'indice est egal au nbre d'image on affecte 0 à indice
+          $('img').hide();//on cache les images
+        }
+
+       // affiche image
+        $('img').eq(indice).show();
+        indice++;//on ecrement l'indice
+    }
+      //function pour la pause
+      $('img').click(function(){
+        if (tourne){
+          clearInterval(timer);// on arrete le setInterval
+          tourne = false;// on indique que le slider est à l'arret
+        }else {
+          affiche();//pour relancer immediatement le slider
+         timer = setInterval(affiche, 3000);//on relance l'appel de la fonction affiche() toutes les 3s
+          tourne = true;
+        }
+      });
+  // appel de la fonction affiche toutes les 3s
+      var timer = setInterval(affiche, 3000);
+      // nbimage = $('img').length;
+
+  /*fonction de gestion de gestion de temps
+  setInterval(function, 3000); clearInterval; settimer*/
+
+    });
+    </script>
+
+
+  </body>
+</html>
